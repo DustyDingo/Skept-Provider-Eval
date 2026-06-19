@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+yt-dlp
+curl_cffi
+httpx
+aiofiles
+aiosqlite
