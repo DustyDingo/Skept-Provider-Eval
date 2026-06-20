@@ -35,7 +35,7 @@ class ResembleProvider(BaseProvider):
             async with httpx.AsyncClient(timeout=60.0) as client:
                 with open(audio_path, "rb") as f:
                     resp = await client.post(
-                        "https://api.resemble.ai/v1/detect",
+                        "https://api.resemble.ai/v2/detect/audio",
                         headers={"Authorization": f"Bearer {_API_KEY}"},
                         files={"audio_file": ("audio.wav", f, "audio/wav")},
                     )
@@ -81,5 +81,5 @@ class ResembleProvider(BaseProvider):
         return ProviderResult(
             provider="resemble", modality="video",
             raw_score=None, normalised_score=None, label=None,
-            latency_ms=0, error="video endpoint not yet implemented",
+            latency_ms=0, error="video endpoint not yet wired",
         )

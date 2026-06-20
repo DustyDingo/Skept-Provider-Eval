@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import asyncio
 import shutil
-import tempfile
 import uuid
 from pathlib import Path
 
@@ -10,7 +9,7 @@ import yt_dlp
 
 
 async def download(url: str) -> dict:
-    job_dir = Path(tempfile.gettempdir()) / f"eval_{uuid.uuid4().hex}"
+    job_dir = Path(f"/tmp/eval_{uuid.uuid4().hex}")
     job_dir.mkdir(parents=True, exist_ok=True)
 
     video_path = job_dir / "video.mp4"
@@ -31,7 +30,6 @@ async def download(url: str) -> dict:
 
     await asyncio.to_thread(_ydl_download)
 
-    # Extract audio as mono 44.1 kHz WAV
     proc = await asyncio.create_subprocess_exec(
         "ffmpeg", "-i", str(video_path),
         "-vn", "-acodec", "pcm_s16le", "-ar", "44100", "-ac", "1",

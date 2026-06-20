@@ -46,9 +46,8 @@ async def analyse(req: AnalyseRequest):
     paths: dict | None = None
     try:
         paths = await download(req.url)
-        await store.save_job(job_id, req.url)
         results = await runner.run_all_providers(paths)
-        await store.save_results(job_id, results)
+        await store.save_results(job_id, req.url, results)
         return {"job_id": job_id, "results": [r.__dict__ for r in results]}
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc

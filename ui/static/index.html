@@ -10,56 +10,55 @@
     body {
       background: #1A1A1A;
       color: #FAF8F5;
-      font-family: Calibri, 'Segoe UI', sans-serif;
-      font-size: 15px;
+      font-family: system-ui, sans-serif;
+      font-size: 14px;
       line-height: 1.5;
       padding: 2rem;
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    h1 { color: #DFB87B; font-size: 1.4rem; margin-bottom: 0.2rem; }
-    .subtitle { color: #8A8A8A; font-size: 0.85rem; margin-bottom: 2rem; }
+    h1 { color: #DFB87B; font-size: 1.3rem; margin-bottom: 0.2rem; }
+    .sub { color: #8A8A8A; font-size: 0.82rem; margin-bottom: 1.8rem; }
 
     h2 {
       color: #DFB87B;
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin: 2rem 0 0.6rem;
+      margin: 1.8rem 0 0.6rem;
     }
 
-    /* ── Submit ── */
-    .submit-row { display: flex; gap: 0.6rem; align-items: center; }
+    /* Submit */
+    .row { display: flex; gap: 0.6rem; align-items: center; }
 
     input[type="url"] {
       flex: 1;
       background: #242424;
-      border: 1px solid #333;
+      border: 1px solid #4A4A4A;
       color: #FAF8F5;
-      padding: 0.55rem 0.85rem;
+      padding: 0.5rem 0.8rem;
       border-radius: 4px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-family: inherit;
     }
     input[type="url"]:focus { outline: none; border-color: #DFB87B; }
-    input[type="url"]::placeholder { color: #555; }
+    input[type="url"]::placeholder { color: #4A4A4A; }
 
     button {
       background: #DFB87B;
       color: #1A1A1A;
       border: none;
-      padding: 0.55rem 1.1rem;
+      padding: 0.5rem 1rem;
       border-radius: 4px;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-family: inherit;
       cursor: pointer;
       white-space: nowrap;
     }
     button:hover { background: #e8c98c; }
-    button:disabled { background: #444; color: #666; cursor: not-allowed; }
-
+    button:disabled { background: #333; color: #666; cursor: not-allowed; }
     .btn-outline {
       background: transparent;
       color: #DFB87B;
@@ -68,175 +67,148 @@
     }
     .btn-outline:hover { background: rgba(223,184,123,0.08); }
 
-    /* ── Spinner ── */
-    .spinner { display: none; align-items: center; gap: 0.5rem; color: #8A8A8A; font-size: 0.85rem; margin-top: 0.75rem; }
-    .spinner.visible { display: flex; }
+    /* Spinner */
+    .spinner { display: none; align-items: center; gap: 0.5rem; color: #8A8A8A; font-size: 0.82rem; margin-top: 0.6rem; }
+    .spinner.on { display: flex; }
     .spin {
-      width: 14px; height: 14px;
+      width: 13px; height: 13px;
       border: 2px solid #333;
       border-top-color: #DFB87B;
       border-radius: 50%;
-      animation: spin 0.75s linear infinite;
+      animation: rot 0.75s linear infinite;
       flex-shrink: 0;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes rot { to { transform: rotate(360deg); } }
 
-    /* ── Tables ── */
-    .table-wrap { overflow-x: auto; }
-
-    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-
+    /* Tables */
+    .wrap { overflow-x: auto; margin-top: 0.2rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
     th {
       text-align: left;
-      color: #6A6A6A;
-      font-size: 0.7rem;
+      color: #8A8A8A;
+      font-size: 0.68rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      padding: 0.4rem 0.7rem;
+      padding: 0.38rem 0.65rem;
       border-bottom: 1px solid #2A2A2A;
+      white-space: nowrap;
     }
+    td { padding: 0.42rem 0.65rem; border-bottom: 1px solid #222; vertical-align: middle; }
+    tr:hover td { background: #1f1f1f; }
 
-    td {
-      padding: 0.45rem 0.7rem;
-      border-bottom: 1px solid #222;
-      vertical-align: middle;
-    }
-    tr:hover td { background: #202020; }
-
-    /* ── Score badges ── */
-    .badge {
+    /* Badges */
+    .b {
       display: inline-block;
-      padding: 0.1rem 0.45rem;
+      padding: 0.1rem 0.4rem;
       border-radius: 3px;
       font-weight: 700;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       white-space: nowrap;
     }
-    .badge-green  { background: rgba(80,200,120,0.15); color: #6ddb90; }
-    .badge-amber  { background: rgba(223,184,123,0.15); color: #DFB87B; }
-    .badge-red    { background: rgba(220,80,80,0.15);   color: #e88; }
-    .badge-grey   { background: rgba(100,100,100,0.15); color: #777; }
+    .g { background: rgba(80,200,120,0.15); color: #6ddb90; }
+    .a { background: rgba(223,184,123,0.15); color: #DFB87B; }
+    .r { background: rgba(220,80,80,0.15); color: #e88; }
+    .n { color: #4A4A4A; }
 
-    .err { color: #e88; font-size: 0.78rem; }
-    .muted { color: #555; }
+    .err { color: #e88; font-size: 0.76rem; }
+    .url-cell { max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #8A8A8A; }
+    .mono { font-family: monospace; font-size: 0.73rem; color: #4A4A4A; }
+    .ts { white-space: nowrap; color: #8A8A8A; font-size: 0.78rem; }
 
-    /* ── URL cell ── */
-    .url-cell {
-      max-width: 220px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      color: #6A6A6A;
-      font-size: 0.8rem;
-    }
-    .mono { font-family: 'Courier New', monospace; font-size: 0.75rem; color: #555; }
-
-    /* ── Ground truth dropdown ── */
     select {
       background: #242424;
       color: #FAF8F5;
-      border: 1px solid #333;
-      padding: 0.2rem 0.4rem;
+      border: 1px solid #4A4A4A;
+      padding: 0.18rem 0.35rem;
       border-radius: 3px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-family: inherit;
       cursor: pointer;
     }
     select:focus { outline: none; border-color: #DFB87B; }
 
-    /* ── Toolbar row ── */
     .toolbar { display: flex; justify-content: space-between; align-items: flex-end; }
+    .empty { color: #4A4A4A; text-align: center; padding: 1.4rem; }
 
-    /* ── Empty state ── */
-    .empty { color: #444; text-align: center; padding: 1.5rem; font-size: 0.85rem; }
-
-    #current-results { display: none; }
+    #cur { display: none; }
   </style>
 </head>
 <body>
 
-  <h1>Skept Provider Eval</h1>
-  <p class="subtitle">Compare deepfake detection APIs in parallel — paste a social media URL to begin.</p>
+<h1>Skept Provider Eval</h1>
+<p class="sub">Compare deepfake detection APIs in parallel — paste a social media URL to begin.</p>
 
-  <!-- Submit -->
-  <div class="submit-row">
-    <input type="url" id="url-input" placeholder="https://www.tiktok.com/..." />
-    <button id="analyse-btn" onclick="submitAnalyse()">Analyse</button>
-  </div>
-  <div class="spinner" id="spinner">
-    <div class="spin"></div>
-    <span>Downloading clip and running providers in parallel…</span>
-  </div>
+<!-- Submit -->
+<div class="row">
+  <input type="url" id="url" placeholder="https://www.tiktok.com/…" />
+  <button id="go" onclick="submit()">Analyse</button>
+</div>
+<div class="spinner" id="spin"><div class="spin"></div><span>Downloading and running providers…</span></div>
 
-  <!-- Latest results -->
-  <div id="current-results">
-    <h2>Latest Results</h2>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Provider</th>
-            <th>Modality</th>
-            <th>Score</th>
-            <th>Label</th>
-            <th>Latency</th>
-            <th>Error</th>
-          </tr>
-        </thead>
-        <tbody id="results-body"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- Job history -->
-  <div class="toolbar">
-    <h2>Job History</h2>
-    <button class="btn-outline" style="margin-top:1.4rem" onclick="exportCsv()">Export CSV</button>
-  </div>
-  <div class="table-wrap">
+<!-- Latest results -->
+<div id="cur">
+  <h2>Latest Results</h2>
+  <div class="wrap">
     <table>
-      <thead>
-        <tr>
-          <th>Job ID</th>
-          <th>URL</th>
-          <th>Timestamp</th>
-          <th>Ground Truth</th>
-          <th>Provider Scores</th>
-        </tr>
-      </thead>
-      <tbody id="history-body">
-        <tr><td colspan="5" class="empty">No jobs yet</td></tr>
-      </tbody>
+      <thead><tr>
+        <th>Provider</th><th>Modality</th><th>Score</th><th>Label</th><th>Latency</th><th>Error</th>
+      </tr></thead>
+      <tbody id="res"></tbody>
     </table>
   </div>
+</div>
+
+<!-- History -->
+<div class="toolbar">
+  <h2>Job History</h2>
+  <button class="btn-outline" style="margin-top:1.4rem" onclick="exportCsv()">Export CSV</button>
+</div>
+<div class="wrap">
+  <table>
+    <thead><tr>
+      <th>Job ID</th>
+      <th>URL</th>
+      <th>Timestamp</th>
+      <th>Ground Truth</th>
+      <th>Resemble Audio</th>
+      <th>Aurigin</th>
+      <th>Sightengine</th>
+      <th>Reality Defender</th>
+    </tr></thead>
+    <tbody id="hist"><tr><td colspan="8" class="empty">No jobs yet</td></tr></tbody>
+  </table>
+</div>
 
 <script>
-  function scoreBadge(score) {
-    if (score == null) return '<span class="badge badge-grey">—</span>';
-    const pct = (score * 100).toFixed(1) + '%';
-    const cls = score < 0.35 ? 'badge-green' : score < 0.65 ? 'badge-amber' : 'badge-red';
-    return `<span class="badge ${cls}">${pct}</span>`;
+  function cls(s) {
+    if (s == null) return 'n';
+    return s < 0.35 ? 'g' : s < 0.65 ? 'a' : 'r';
+  }
+  function fmt(s) {
+    return s == null ? '—' : (s * 100).toFixed(1) + '%';
+  }
+  function badge(s) {
+    return `<span class="b ${cls(s)}">${fmt(s)}</span>`;
+  }
+  function esc(s) {
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function fmtDate(iso) {
+    try { return new Date(iso + 'Z').toLocaleString(); } catch { return iso; }
+  }
+  function getScore(results, provider, modality) {
+    const r = (results || []).find(r => r.provider === provider && r.modality === modality);
+    return r ? r.normalised_score : null;
   }
 
-  function fmtScore(score) {
-    return score == null ? '—' : (score * 100).toFixed(1) + '%';
-  }
-
-  function scoreCls(score) {
-    if (score == null) return 'badge-grey';
-    return score < 0.35 ? 'badge-green' : score < 0.65 ? 'badge-amber' : 'badge-red';
-  }
-
-  async function submitAnalyse() {
-    const url = document.getElementById('url-input').value.trim();
+  async function submit() {
+    const url = document.getElementById('url').value.trim();
     if (!url) return;
-
-    const btn = document.getElementById('analyse-btn');
-    const spinner = document.getElementById('spinner');
+    const btn = document.getElementById('go');
+    const sp  = document.getElementById('spin');
     btn.disabled = true;
-    spinner.classList.add('visible');
-
+    sp.classList.add('on');
     try {
       const resp = await fetch('/analyse', {
         method: 'POST',
@@ -244,69 +216,64 @@
         body: JSON.stringify({ url }),
       });
       if (!resp.ok) {
-        const err = await resp.json().catch(() => ({}));
-        alert('Error: ' + (err.detail || resp.statusText));
+        const e = await resp.json().catch(() => ({}));
+        alert('Error: ' + (e.detail || resp.statusText));
         return;
       }
       const data = await resp.json();
       renderResults(data.results);
       await loadHistory();
-    } catch (e) {
+    } catch(e) {
       alert('Request failed: ' + e.message);
     } finally {
       btn.disabled = false;
-      spinner.classList.remove('visible');
+      sp.classList.remove('on');
     }
   }
 
   function renderResults(results) {
-    const tbody = document.getElementById('results-body');
-    tbody.innerHTML = results.map(r => `
+    document.getElementById('res').innerHTML = results.map(r => `
       <tr>
-        <td>${r.provider}</td>
-        <td>${r.modality}</td>
-        <td>${scoreBadge(r.normalised_score)}</td>
-        <td>${r.label || '<span class="muted">—</span>'}</td>
-        <td>${r.latency_ms ? r.latency_ms + ' ms' : '<span class="muted">—</span>'}</td>
-        <td class="err">${r.error || ''}</td>
+        <td>${esc(r.provider)}</td>
+        <td>${esc(r.modality)}</td>
+        <td>${badge(r.normalised_score)}</td>
+        <td>${esc(r.label) || '<span class="n">—</span>'}</td>
+        <td>${r.latency_ms ? r.latency_ms + ' ms' : '<span class="n">—</span>'}</td>
+        <td class="err">${esc(r.error)}</td>
       </tr>`).join('');
-    document.getElementById('current-results').style.display = 'block';
+    document.getElementById('cur').style.display = 'block';
   }
 
   async function loadHistory() {
     const resp = await fetch('/jobs');
     const jobs = await resp.json();
-    const tbody = document.getElementById('history-body');
-
+    const tbody = document.getElementById('hist');
     if (!jobs.length) {
-      tbody.innerHTML = '<tr><td colspan="5" class="empty">No jobs yet</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="8" class="empty">No jobs yet</td></tr>';
       return;
     }
-
-    tbody.innerHTML = jobs.map(job => {
-      const scores = (job.results || []).map(r =>
-        `<span class="badge ${scoreCls(r.normalised_score)}" title="${r.provider}/${r.modality}">`
-        + `${r.provider.slice(0,3)} ${fmtScore(r.normalised_score)}</span>`
-      ).join(' ');
-
-      const gt = job.ground_truth || 'unknown';
+    tbody.innerHTML = jobs.map(j => {
+      const gt = j.ground_truth || 'unknown';
       return `<tr>
-        <td class="mono">${job.job_id.slice(0, 8)}</td>
-        <td class="url-cell" title="${escHtml(job.clip_url)}">${escHtml(job.clip_url)}</td>
-        <td style="white-space:nowrap;font-size:0.8rem;color:#6A6A6A">${fmtDate(job.created_at)}</td>
+        <td class="mono">${esc(j.job_id.slice(0,8))}</td>
+        <td class="url-cell" title="${esc(j.clip_url)}">${esc(j.clip_url)}</td>
+        <td class="ts">${fmtDate(j.created_at)}</td>
         <td>
-          <select onchange="setGroundTruth('${job.job_id}', this.value)">
-            <option value="unknown" ${gt==='unknown'?'selected':''}>unknown</option>
-            <option value="fake"    ${gt==='fake'   ?'selected':''}>fake</option>
-            <option value="authentic" ${gt==='authentic'?'selected':''}>authentic</option>
+          <select onchange="setGT('${esc(j.job_id)}', this.value)">
+            <option value="unknown"   ${gt==='unknown'   ?'selected':''}>unknown</option>
+            <option value="fake"      ${gt==='fake'      ?'selected':''}>fake</option>
+            <option value="authentic" ${gt==='authentic' ?'selected':''}>authentic</option>
           </select>
         </td>
-        <td>${scores || '<span class="muted">—</span>'}</td>
+        <td>${badge(getScore(j.results, 'resemble', 'audio'))}</td>
+        <td>${badge(getScore(j.results, 'aurigin', 'audio'))}</td>
+        <td>${badge(getScore(j.results, 'sightengine', 'synthetic'))}</td>
+        <td>${badge(getScore(j.results, 'reality_defender', 'audio'))}</td>
       </tr>`;
     }).join('');
   }
 
-  async function setGroundTruth(jobId, label) {
+  async function setGT(jobId, label) {
     await fetch(`/jobs/${jobId}/ground_truth`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -314,24 +281,10 @@
     });
   }
 
-  function exportCsv() {
-    window.location.href = '/export';
-  }
+  function exportCsv() { window.location.href = '/export'; }
 
-  function escHtml(s) {
-    return String(s)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
-
-  function fmtDate(iso) {
-    try { return new Date(iso + 'Z').toLocaleString(); } catch { return iso; }
-  }
-
-  document.getElementById('url-input').addEventListener('keydown', e => {
-    if (e.key === 'Enter') submitAnalyse();
+  document.getElementById('url').addEventListener('keydown', e => {
+    if (e.key === 'Enter') submit();
   });
 
   loadHistory();

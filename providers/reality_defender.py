@@ -38,7 +38,7 @@ class RealityDefenderProvider(BaseProvider):
                 with open(path, "rb") as f:
                     resp = await client.post(
                         _BASE_URL,
-                        headers={"x-api-key": _API_KEY},
+                        headers={"X-API-Key": _API_KEY},
                         files={"file": (filename, f, mime)},
                     )
                 resp.raise_for_status()
