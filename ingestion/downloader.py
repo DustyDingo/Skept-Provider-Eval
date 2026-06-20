@@ -33,7 +33,7 @@ async def download(url: str) -> dict:
 
     proc = await asyncio.create_subprocess_exec(
         "ffmpeg", "-i", str(video_path),
-        "-vn", "-acodec", "pcm_s16le", "-ar", "44100", "-ac", "1",
+        "-vn", "-acodec", "pcm_s16le", "-ar", "16000", "-ac", "1",
         str(audio_path), "-y",
         stdout=asyncio.subprocess.DEVNULL,
         stderr=asyncio.subprocess.DEVNULL,

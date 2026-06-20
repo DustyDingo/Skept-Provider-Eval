@@ -35,16 +35,23 @@ class ResembleProvider(BaseProvider):
             async with httpx.AsyncClient(timeout=60.0) as client:
                 with open(audio_path, "rb") as f:
                     resp = await client.post(
-                        "https://f.resemble.ai/v1/detect",
-                        headers={"Authorization": f"Bearer {_API_KEY}"},
+                        "https://app.resemble.ai/api/v2/detect",
+                        headers={
+                            "Authorization": f"Bearer {_API_KEY}",
+                            "Prefer": "wait",
+                        },
                         files={"file": ("audio.wav", f, "audio/wav")},
                     )
                 resp.raise_for_status()
                 data = resp.json()
 
-            raw = (data.get("metrics") or {}).get("aggregated_score")
+            raw = ((data.get("item") or {}).get("metrics") or {}).get("aggregated_score")
+            if raw is None:
+                raw = (data.get("metrics") or {}).get("aggregated_score")
             if raw is None:
                 raw = data.get("aggregated_score")
+            if raw is not None:
+                raw = float(raw)
             if raw is None:
                 return ProviderResult(
                     provider="resemble", modality="audio",
