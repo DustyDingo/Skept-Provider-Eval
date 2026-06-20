@@ -6,6 +6,7 @@ import uuid
 from pathlib import Path
 
 import yt_dlp
+from yt_dlp.networking.impersonate import ImpersonateTarget
 
 
 async def download(url: str) -> dict:
@@ -22,7 +23,7 @@ async def download(url: str) -> dict:
         "quiet": True,
     }
     if "tiktok.com" in url:
-        ydl_opts["impersonate"] = "chrome"
+        ydl_opts["impersonate"] = ImpersonateTarget("chrome")
 
     def _ydl_download() -> None:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
