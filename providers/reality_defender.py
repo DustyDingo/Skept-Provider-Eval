@@ -8,7 +8,7 @@ import httpx
 from providers.base import BaseProvider, ProviderResult
 
 _API_KEY = os.getenv("REALITY_DEFENDER_API_KEY")
-_BASE_URL = "https://api.realitydefender.com/api/upload"
+_BASE_URL = "https://api.prd.realitydefender.xyz/api/upload"
 
 
 class RealityDefenderProvider(BaseProvider):

@@ -35,7 +35,7 @@ class SightengineProvider(BaseProvider):
                     resp = await client.post(
                         "https://api.sightengine.com/1.0/video/check-sync.json",
                         data={
-                            "models": "ai-generated",
+                            "models": "genai",
                             "api_user": _API_USER,
                             "api_secret": _API_SECRET,
                         },
@@ -44,7 +44,7 @@ class SightengineProvider(BaseProvider):
                 resp.raise_for_status()
                 data = resp.json()
 
-            raw = (data.get("ai_generated") or {}).get("score")
+            raw = (data.get("genai") or {}).get("score")
             if raw is None:
                 return ProviderResult(
                     provider="sightengine", modality="synthetic",

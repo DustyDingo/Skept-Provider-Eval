@@ -32,7 +32,7 @@ class AuriginProvider(BaseProvider):
             async with httpx.AsyncClient(timeout=60.0) as client:
                 with open(audio_path, "rb") as f:
                     resp = await client.post(
-                        "https://api.aurigin.ai/v1/detect",
+                        "https://api.aurigin.ai/v1/predict",
                         headers={"x-api-key": _API_KEY},
                         files={"file": ("audio.wav", f, "audio/wav")},
                     )
