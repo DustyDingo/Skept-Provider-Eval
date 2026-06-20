@@ -2,11 +2,16 @@ from __future__ import annotations
 
 import csv
 import io
+import logging
+import traceback
 import uuid
 from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 from fastapi.responses import HTMLResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -50,6 +55,7 @@ async def analyse(req: AnalyseRequest):
         await store.save_results(job_id, req.url, results)
         return {"job_id": job_id, "results": [r.__dict__ for r in results]}
     except Exception as exc:
+        logger.error(f"/analyse error: {traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=str(exc)) from exc
     finally:
         if paths:
